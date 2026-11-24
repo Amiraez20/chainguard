@@ -11,7 +11,7 @@ from src.features.opcodes import opcode_features
 
 load_dotenv()
 
-w3 = Web3(Web3.HTTPProvider(os.environ.get("ETH_RPC_URL", "http://localhost:8545")))
+w3 = Web3(Web3.HTTPProvider(os.environ.get("ETH_RPC_URL", "http://localhost:8545"), request_kwargs={"timeout": 30}))
 MODEL_PATH = "models/contract-rf-code-v1.joblib"  # remplacé par le modèle de Sara
 MODEL_VERSION = "contract-rf-code-v1"
 BUNDLE = joblib.load(MODEL_PATH)
