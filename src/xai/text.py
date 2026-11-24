@@ -32,11 +32,18 @@ LABELS = {
 
 
 def to_text(contribs, k=3) -> str:
-    """Phrase lisible par un analyste SOC, à partir des k plus fortes contributions."""
-    parts = []
-    for c in sorted(contribs, key=lambda c: -abs(c.shap))[:k]:
+    """Phrase lisible par un analyste SOC : raisons de l'alerte, puis facteurs atténuants."""
+    top = sorted(contribs, key=lambda c: -abs(c.shap))[:k]
+
+    def one(c):
         label, fmt = LABELS.get(c.name, (c.name, "{:,.2f}"))
         val = fmt(c.value) if callable(fmt) else _fr(fmt.format(c.value))
-        sens = "↑ risque" if c.shap > 0 else "↓ risque"
-        parts.append(f"{label} : {val} ({sens})")
-    return "Signalée principalement pour : " + " ; ".join(parts) + "."
+        return f"{label} : {val}"
+
+    up = [one(c) for c in top if c.shap > 0]
+    down = [one(c) for c in top if c.shap <= 0]
+    txt = ("Signalée principalement pour : " + " ; ".join(up)) if up \
+        else "Signalée sans facteur de risque dominant"
+    if down:
+        txt += ". Facteurs atténuants : " + " ; ".join(down)
+    return txt + "."
