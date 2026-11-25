@@ -1,0 +1,78 @@
+[
+  {
+    "timestamp": "2026-11-25T09:24:29.118374Z",
+    "chain": "ethereum",
+    "entity_type": "wallet",
+    "address": "0x0020731604c882cf7bf8c444be97d17b19ea4316",
+    "score": 0.9078044891357422,
+    "label": "suspicious",
+    "fraud_type": "scam",
+    "top_features": [
+      {
+        "name": "Unique Received From Addresses",
+        "value": 12.0,
+        "shap": 3.6318514347076416
+      },
+      {
+        "name": "Time Diff between first and last (Mins)",
+        "value": 588574.7666666657,
+        "shap": -1.616590142250061
+      },
+      {
+        "name": "Avg min between received tnx",
+        "value": 42041.05476190469,
+        "shap": -1.0276305675506592
+      },
+      {
+        "name": "min val sent",
+        "value": 1.000875,
+        "shap": 0.4871719181537628
+      },
+      {
+        "name": "min value received",
+        "value": 0.0001,
+        "shap": 0.4650845527648926
+      }
+    ],
+    "explanation_text": "Signal\u00e9e principalement pour : exp\u00e9diteurs distincts : 12. Facteurs att\u00e9nuants : dur\u00e9e d'activit\u00e9 : 409 jours ; \u00e9cart moyen entre r\u00e9ceptions : 29 jours.",
+    "model_version": "wallet-xgb-live-v1"
+  },
+  {
+    "timestamp": "2026-11-25T09:24:35.345706Z",
+    "chain": "ethereum",
+    "entity_type": "wallet",
+    "address": "0x00009277775ac7d0d59eaad8fee3d10ac6c805e8",
+    "score": 0.0012652085861191154,
+    "label": "normal",
+    "fraud_type": "unknown",
+    "top_features": [
+      {
+        "name": "Time Diff between first and last (Mins)",
+        "value": 2412260.7166666687,
+        "shap": -3.949605941772461
+      },
+      {
+        "name": "Unique Received From Addresses",
+        "value": 41.0,
+        "shap": 2.0403945446014404
+      },
+      {
+        "name": "Sent tnx",
+        "value": 688.0,
+        "shap": -1.6563668251037598
+      },
+      {
+        "name": "avg val received",
+        "value": 6.59510852528513,
+        "shap": -1.192569375038147
+      },
+      {
+        "name": "total ether received",
+        "value": 586.9646587503765,
+        "shap": -1.0674867630004883
+      }
+    ],
+    "explanation_text": "",
+    "model_version": "wallet-xgb-live-v1"
+  }
+]
