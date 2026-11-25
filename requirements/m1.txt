@@ -2,3 +2,4 @@ web3>=7.0
 pyevmasm>=0.2.3
 fastapi>=0.110
 uvicorn[standard]>=0.29
+elasticsearch>=8.13,<9
