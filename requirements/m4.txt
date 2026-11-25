@@ -1,0 +1,5 @@
+# installer torch AVANT ce fichier :
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch_geometric>=2.5
+elasticsearch>=8.13,<9
+streamlit>=1.35
