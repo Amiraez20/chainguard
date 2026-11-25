@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from web3 import Web3
 
 from src.common.alert import Alert
+from src.common.elastic import index_alert, setup_index
 from src.features.opcodes import opcode_features
 
 load_dotenv()
@@ -37,6 +38,23 @@ def score_contract(address: str) -> Alert:
                  model_version=MODEL_VERSION)
 
 
+_INDEX_READY = False
+
+
+def publish(alert: Alert) -> bool:
+    """Envoie l'alerte dans Elasticsearch. Ne fait jamais planter l'écouteur."""
+    global _INDEX_READY
+    try:
+        if not _INDEX_READY:
+            setup_index()
+            _INDEX_READY = True
+        index_alert(alert)
+        return True
+    except Exception as e:
+        print(f"[elastic] alerte non indexée : {e}")
+        return False
+
+
 def watch(poll_seconds: int = 12):
     """Parcourt chaque nouveau bloc et score les contrats créés (tx.to == None)."""
     last = w3.eth.block_number
@@ -61,5 +79,6 @@ def watch(poll_seconds: int = 12):
 
 if __name__ == "__main__":
     for alert in watch():
+        publish(alert)
         if alert.label == "suspicious":
             print("ALERTE", alert.model_dump_json())
