@@ -1,0 +1,10 @@
+model,protocole,recall,precision,f1,pr_auc,roc_auc,temps_s
+m4_rf_none,"temporel, rééq. sur train",0.722,0.967,0.827,0.795,0.932,12.9
+m4_xgb_none,"temporel, rééq. sur train",0.723,0.918,0.809,0.804,0.939,12.8
+m4_rf_smote,"temporel, rééq. sur train",0.719,0.913,0.805,0.805,0.945,29.4
+m4_xgb_smote,"temporel, rééq. sur train",0.729,0.891,0.802,0.814,0.946,17.2
+m4_rf_adasyn_tl,"temporel, rééq. sur train",0.72,0.878,0.791,0.812,0.954,75.2
+m4_xgb_adasyn_tl,"temporel, rééq. sur train",0.732,0.873,0.797,0.813,0.946,47.0
+m4_rf_none_local,"temporel, features locales",0.713,0.895,0.793,0.782,0.904,
+m4_rf_LEAK_resample_before_split,rééquilibrage AVANT split,0.997,0.996,0.997,1.0,1.0,
+m4_rf_random_split,split aléatoire,0.878,0.998,0.934,0.982,0.997,
